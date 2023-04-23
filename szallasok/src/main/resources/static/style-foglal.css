@@ -1,0 +1,33 @@
+:root {
+    --clr1: #983106; 
+    --clr3: #122531;
+    --clr4: #E1E6E7;
+    --clr5: #949899;
+    --font-size: 16px;
+    --menu-font-size: 20px;
+}
+
+
+.foglal_form {
+    background-color: var(--clr3);
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    padding: 1em 1em;
+    border-radius: .5em;
+    text-align: center;
+}
+
+.foglal_form form {
+    border: 0px;
+    background-color: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.foglal_form span {
+    font-size: 24px;
+    background-color: inherit;
+    color: var(--clr4);
+    margin: .5em 1em;
+}

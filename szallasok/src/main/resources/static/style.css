@@ -1,0 +1,414 @@
+:root {
+    --clr1: #983106; 
+    --clr3: #122531;
+    --clr4: #E1E6E7;
+    --clr5: #949899;
+    --font-size: 16px;
+    --menu-font-size: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Futura;
+    color: white;
+
+    font-size: var(--font-size);
+}
+
+body{
+    background: url(/img/reg_background.png), url(../img/reg_background.png), url(../../img/reg_background.png), url(../../../img/reg_background.png) , url(../../../../img/reg_background.png);
+}
+
+/********************/
+/*	HEADER - NAVIGATION	*/
+/********************/
+
+header{
+    background-color: var(--clr3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+header nav {
+    background-color: inherit;
+}
+
+header nav ul {
+    background-color: inherit;
+    padding: 1em 0em 1em 4em;
+    margin: 0;
+}
+
+header nav li {
+    background-color: inherit;
+    margin: .5em 0;
+    padding: .5em 0;
+    display: inline-block;
+
+    list-style: none;
+}
+
+header nav li a {
+    background-color: inherit;
+    color: var(--clr4);
+	padding: .5em 1em;
+    margin: 0;
+    border-radius: .5em;
+    border: 2px solid var(--clr4);
+
+    text-decoration: none;
+    font-size: var(--menu-font-size);
+    transition: all .3s ease 0s;
+}
+header nav li a:hover {
+	color: var(--clr3);
+	background-color: var(--clr4);
+    transition: all .3s ease 0s;
+}
+
+#title {
+    background-color: var(--clr3);
+    color: var(--clr4);
+    font-size: 28px;
+    font-weight: bolder;
+    border:none;
+    margin: .3em;
+    float: left;
+}
+
+#title_2 {
+    background-color: var(--clr3);
+    color: var(--clr4);
+    font-size: 28px;
+    font-weight: bolder;
+    border:none;
+    margin: .3em;
+    float: left;
+}
+
+#title_3 {
+    background-color: var(--clr3);
+    color: var(--clr4);
+    font-size: 28px;
+    font-weight: bolder;
+    border:none;
+    margin: .3em;
+    float: left;
+}
+
+#title_4 {
+    background-color: var(--clr3);
+    color: var(--clr4);
+    font-size: 28px;
+    font-weight: bolder;
+    border:none;
+    margin: .3em;
+    float: left;
+}
+
+@media only screen and (max-width: 800px) {
+    header {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+    }
+    header nav{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    header nav ul { 
+        width: 100%;
+        height: 100vh;
+        padding: 0em;
+        min-width: min-content;
+    }
+    header nav > ul li {
+        display: block; 
+        line-height: 3em;
+    }
+    header nav > ul a {font-size: 24px;}
+    #title {
+        display: none;
+    }
+}
+
+/* Page title*/
+#page_title {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    margin: calc(2 *  var(--font-size));
+    display: block;
+}
+
+/********************/
+/*		MAIN CONTENT	*/
+/********************/
+main{
+    margin: 1em;
+}
+
+a{
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--clr4);
+}
+
+button, input, a{
+ padding: .5em 1em;
+     background-color: var(--clr4);
+     margin: 0;
+     border-radius: .5em;
+     border: 2px solid var(--clr4);
+     transition: all .3s ease 0s;
+}
+
+button, input {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--clr1);
+
+    text-decoration: none;
+}
+
+input[type="text"] {
+    color: var(--clr1);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+input[type="submit"], select, a {
+    background-color: var(--clr3);
+    color: var(--clr4);
+    transition: all .3s ease 0s;
+}
+
+button:hover, input:hover[type="submit"], a:hover {
+    color: var(--clr1);
+    background-color: var(--clr4);
+    transition: all .3s ease 0s;
+}
+
+textarea {
+    color: var(--clr1);
+    background-color: var(--clr4);
+}
+
+/********************/
+/*	   FORM     	*/
+/********************/
+
+form {
+    background-color: var(--clr3);
+    margin: 1em;
+    padding: 1em;
+    border-radius: .5em;
+    border: 2px solid var(--clr4);
+    width: fit-content;
+}
+
+form label {
+    display: inline-block;
+    color: var(--clr4);
+    background-color: inherit;
+    font-size: var(--menu-font-size);
+}
+
+form input:hover {
+    /*background*/
+}
+
+/********************/
+/*		TABLE    	*/
+/********************/
+
+table{
+    border-collapse: collapse;
+    color: var(--clr3);
+    margin: 1em;
+}
+
+table td, table th {
+    border: 1px solid  var(--clr3);
+    padding: 8px;
+    color: var(--clr3);
+  }
+  
+  table tr:nth-child(even){background-color: var(--clr5);}
+  
+  table tr:hover {background-color: var(--clr4);}
+  
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: var(--clr3);
+    color: var(--clr4);
+  }
+
+
+
+  table img {
+       max-width: 230px;
+       max-height: 230px;
+       border-radius: 40px;
+  }
+
+/*  szallasok listája */
+.kereso {
+    min-width: 50%;
+}
+.kereso td, .ajanlas td  {
+    line-height: 2.5em;
+}
+.kereso td a:hover, .ajanlas td a:hover {
+    color: var(--clr3) !important;
+}
+  /* ajanlasok */
+
+  .ajanlas {
+    display: block;
+    background-color: var(--clr5);
+    position: absolute;
+    top: 16em;
+    right: 1em;
+    border-radius: .5em;
+    border: .5em solid var(--clr1);
+    width: min-content;
+    min-width: 40%;
+    overflow: visible;
+    margin: 1em;
+  }
+
+  .ajanlas h2 {
+    background-color: var(--clr5);
+    color: var(--clr3);
+    font-size: 30px;
+    text-align: center;
+    margin: 1em;
+  }
+
+  @media only screen and (max-width: 1500px) {
+    .ajanlas {
+        position: static;
+      }
+  }
+
+  @media only screen and (max-width: 780px) {
+      .ajanlas td:nth-child(2), .ajanlas th:nth-child(2), .kereso td:nth-child(2), .kereso th:nth-child(2) {
+          display: none;
+        }
+  }
+
+/*Értékelések*/
+
+.ertekeles {
+    min-width: 300px;
+    background-color:  var(--clr3);
+    color: var(--clr4);
+    font-size: 20px;
+    margin: 1em;
+    padding: 1em;
+    border-radius: .5em;
+    border: .1em solid var(--clr4);
+}
+.ertekeles h2, .ertekeles span, .ertekeles p, .ertekeles a{
+    background-color: inherit;
+    color: var(--clr4);
+}
+
+
+article button{
+margin-right: 20px;
+background-color: #122531;
+color:white;
+margin-left: auto;
+}
+
+#szallas_nev{
+    margin-left: 20px;
+    font-weight: bold;
+}
+/*ertekelesek_admin.html */
+
+#ertekelesek_admin_form{
+    margin-left: auto;
+    margin-right: auto;
+    position: center;
+}
+
+#ertekelesek_admin_form h2,p, div{
+    /*background: #122531;*/
+    color:white;
+}
+
+/*users.html*/
+
+.users_form{
+margin-left: auto;
+margin-right: auto;
+    position: center;
+width: 16.25em;
+}
+
+.users_form span{
+    background: #122531;
+    color: white;
+}
+
+.users_article h2, .users_article button{
+    display: inline-block;
+    }
+
+/*profil.html*/
+
+#profil_form{
+    background-color: #122531;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*hirdeteseim.html*/
+
+#hirdeteseim_form{
+    margin-left: auto;
+    margin-right: auto;
+}
+#hirdeteseim_table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*kiado_uj_hirdetes.html*/
+#uj_hirdetes_form{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*hirdetes_szerkesztes.html*/
+#apartman_h1{
+    text-align:center;
+    font-size: larger;
+    
+}
+
+#hirdetes_szerkesztes_form{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/****************************/
+/*		segítő osztályok 	*/
+/****************************/
+
+.middle_items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

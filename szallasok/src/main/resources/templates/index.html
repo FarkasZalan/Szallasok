@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Szállás-kereső</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="alert.css"/>
+    <link rel="stylesheet" type="text/css" href="menubar.css"/>
+    <link rel="stylesheet" type="text/css" href="style-index.css"/>
+</head>
+<body>
+<div th:if="${berlo}" class="topnav">
+    <a id="title" href="/">Szállás Neked</a>
+    <a class="active" href="/">Kezdőlap</a>
+    <a href="/foglalasaim">Foglalásaim</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+
+<div th:if="${kiado}" class="topnav">
+    <a id="title_2" href="/">Szállás Neked</a>
+    <a class="active" href="/">Kezdőlap</a>
+    <a href="/hirdeteseim">Saját szállásaim</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+
+<div th:if="${admin}" class="topnav">
+    <a id="title_3" href="/">Szállás Neked</a>
+    <a class="active" href="/">Kezdőlap</a>
+    <a href="/users" >Felhasználók</a>
+    <a href="/szallasok_admin" >Szállások</a>
+    <a href="/ertekelesek_admin" >Értékelések</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+
+<div th:if="${ures}" class="topnav">
+    <a id="title_4" href="/">Szállás Neked</a>
+    <a class="active" href="/">Kezdőlap</a>
+    <a href="/log_reg">Bejelentkezés/Regisztráció</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+<h1 id="page_title">Szállás-kereső</h1>
+
+<main>
+    <form action="#" th:action="@{/index}" method="POST"  accept-charset="utf-8">
+        <label for="telepules">Település</label>
+        <input type="text" id="telepules" name="telepules" list="varosnev">
+            <datalist id="varosnev">
+                <option value="Budapest">
+                <option value="Szeged">
+            </datalist>
+        </input>
+
+        <label for="rendezes">Rendezés</label>
+        <select id="rendezes" name="rendezes">
+            <option value='novekvo'>Olcsóbb elől</option>
+            <option value='csokkeno'>Drágább elől</option>
+        </select>
+        <input type="submit" value="Keresés">
+    </form>
+
+    <table class="kereso">
+        <thead>
+        <tr>
+            <th>Szállás-név</th>
+            <th></th>
+            <th>ár</th>
+            <th>Település</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" szallas, i : ${szallasok}">
+            <td th:text="${szallas.nev}" >Adri-szállás</td>
+            <td th:if="${szallas.kep != ''}"><img alt="" th:src="*{'data:image/jpeg;base64,'+{szallas.kep}}" /></td>
+            <td th:if="${szallas.kep == ''}"><img alt="" src="img/image1.jpg" /></td>
+            <td th:text="${szallas.arPerNapPerFo}" >1000 <span> Ft/fő/éj</span></td>
+            <td th:text="${szallas.helyszin}" >Budapest</td>
+            <td ><a th:href="|szallas/${szallas.id}|" href="#">Tovább</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="ajanlas">
+        <h2>Ajánlások</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Szállás-név</th>
+                <th></th>
+                <th>ár</th>
+                <th>Település</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each=" szallas, i : ${szallasok2}">
+                <td th:text="${szallas.nev}" >Adri-szállás</td>
+                <td th:if="${szallas.kep != ''}"><img alt="" th:src="*{'data:image/jpeg;base64,'+{szallas.kep}}" /></td>
+                <td th:if="${szallas.kep == ''}"><img alt="" src="img/image1.jpg" /></td>
+                <td th:text="${szallas.arPerNapPerFo}" >1000 <span> Ft/fő/éj</span></td>
+                <td th:text="${szallas.helyszin}" >Budapest</td>
+                <td ><a th:href="|szallas/${szallas.id}|" href="#">Tovább</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer>
+</footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Foglalás</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="style-szallas.css"/>
+    <link rel="stylesheet" type="text/css" href="alert.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/menubar.css}"/>
+</head>
+<body>
+<div th:if="${berlo}" class="topnav">
+    <a id="title" href="/">Szállás Neked</a>
+    <a href="/">Kezdőlap</a>
+    <a class="active" href="/foglalas">Foglalás</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+
+<div th:if="${kiado}" class="topnav">
+    <a id="title_2" href="/">Szállás Neked</a>
+    <a href="/">Kezdőlap</a>
+    <a href="/hirdeteseim">Saját szállásaim</a>
+    <a class="active" href="/foglalas">Foglalás</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+
+    <main>
+        <div class="szallas_content">
+            <h2 class="szallas_title">BicskeMarkó Szállás</h2>
+            <div class="szallas_description">
+                <img src="img/image1.jpg" alt="kép">
+                <div>
+                    <h3 class="szallas_label">Foglalás adatai</h3>
+                    <ul>
+                        <li>Mettől:             <span>2022.08.11</span></li>
+                        <li>Meddig:             <span>2022.08.14</span></li>
+                        <li>Ennyi főre foglalt: <span>3</span></li>
+                        <li>Fizetendő összeg:   <span>10000Ft</span></li>
+                    </ul>
+                </div>
+                <span></span>
+                <span></span>
+                <a class="lonely_link" href="szallas.html">Ugrás a hirdetésre</a>
+                <form action="">
+                    <input type="submit" value="Foglalás törlése">
+                </form>
+                <div>
+                    <h3 class="szallas_label">Leírás</h3>
+                    <span>
+                        Ez egy Szegedi szállás nyugdíjasoknak akik szeretnének kikapcsolódni a hétvégén távol az unokáktól.
+                        A város széle felé helyeszkedik el, így nincsen nagy zaj.
+                        Tökéletes választás pihenésre.
+                    </span>
+                </div>
+                <div>
+                    <h3 class="szallas_label">Paraméterek</h3>
+                    <ul>
+                        <li>Hírdető: Bicskás Laci</li>
+                        <li>Cím: Szeged, Almási út 7</li>
+                        <li>Tel: 063044442233</li>
+                        <li>E-mail: szallas@email.com</li>
+                        <li>férőhely: 20</li>
+                        <li>Ár: 10000 Ft/fő/éj</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

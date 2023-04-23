@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hírdetéseim</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="alert.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/menubar.css}"/>
+    <link rel="stylesheet" type="text/css" href="style-hirdeteseim.css"/>
+
+    <style>
+        .torol_gomb{
+        padding: 0.4em 1em;
+        cursor: pointer;
+        }
+        .torol_gomb:hover{
+        color: #cd2b30;
+        }
+    </style>
+</head>
+<body>
+<div class="topnav">
+    <a id="title_2" href="/">Szállás Neked</a>
+    <a href="/">Kezdőlap</a>
+    <a class="active" href="/hirdeteseim">Saját szállásaim</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+<main class="middle_items">
+    <a href="/kiado_uj_hirdetes">Új Szállás</a>
+    <table class="kereso">
+        <thead>
+        <tr>
+            <th>Szállás-név</th>
+            <th></th>
+            <th>Ár</th>
+            <th>Település</th>
+            <th>Leírás</th>
+            <th>Férőhelyek száma</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" szallas, i : ${szallasok}">
+            <td th:text="${szallas.nev}" >Adri-szállás</td>
+            <td th:if="${szallas.kep != ''}"><img alt="" th:src="*{'data:image/jpeg;base64,'+{szallas.kep}}" /></td>
+            <td th:if="${szallas.kep == ''}"><img alt="" src="img/image1.jpg" /></td>
+            <td th:text="${szallas.arPerNapPerFo}" >1000 <span> Ft/fő/éj</span></td>
+            <td th:text="${szallas.helyszin}" >Budapest</td>
+            <td th:text="${szallas.leiras}" >Kell egy ház, lenn az óceán partján.</td>
+            <td th:text="${szallas.maxFerohely}" ></td>
+            <td ><a th:href="|hirdeteseim/${szallas.id}/szerkeszt|" href="#">Szerkeszt</a></td>
+            <form action="/szallas_torlese" method="get">
+                <input type="hidden" th:value="${szallas.id}" name="szallasAzonosito"/>
+                <td><input class="torol_gomb" type="submit" name="submit" alt="torol" value="Szállás törlése"></td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

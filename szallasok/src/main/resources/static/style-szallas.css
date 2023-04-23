@@ -1,0 +1,133 @@
+:root {
+    --clr1: #983106; 
+    --clr3: #122531;
+    --clr4: #E1E6E7;
+    --clr5: #949899;
+    --font-size: 16px;
+    --menu-font-size: 20px;
+    --font-size-title: 32px;
+}
+
+.szallas_content {
+    background-color: var(--clr3);
+    margin: 0;
+    padding: 2em 2em;
+    border-radius: .5em;
+    border: 2px solid;
+    min-width: min-content;
+    width: 500px;
+}
+
+.szallas_description {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: .5em .5em;
+    padding: .5em .5em;
+    border-radius: .5em;
+}
+
+.szallas_description > div {
+    border-radius: .2em;
+    border: 2px solid var(--clr3);
+    padding: .2em .2em;
+}
+
+.szallas_description > img {
+    border: 2px solid var(--clr4);
+    max-width: 300px;
+    max-height: 200px;
+}
+
+.szallas_description > a {
+   width: fit-content;
+}
+
+.szallas_description > form {
+    padding: 0;
+    margin: 0;
+}
+.szallas_description > form input{
+    display: inline-block;
+    background-color: var(--clr3);
+    color: var(--clr4);
+	padding: .5em 1em;
+    text-decoration: none;
+    font-size: var(--menu-font-size);
+}
+.szallas_description > form input:hover {
+	color: var(--clr4);
+	background-color: var(--clr1);
+}
+
+/* LIST */
+.szallas_description div ul{
+    list-style-type: square;
+    margin-left: 2em;
+}
+
+/* TEXT */
+.szallas_title {
+    background-color: var(--clr4);
+    color: var(--clr1);
+    font-size: var(--font-size-title);
+    width: fit-content;
+    padding: .2em .2em;
+    margin-bottom: .5em;
+    border-radius: .2em;
+    border: 2px solid;  
+}
+
+.szallas_label {
+    font-size: 24px;
+}
+
+
+/* IMAGES */
+.img_container {
+    background-color: inherit;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: .5em .5em;
+    margin-bottom: .5em;
+}
+
+.img_container img{
+    border: 2px solid var(--clr4);
+    max-width: 300px;
+    max-height: 200px;
+}
+
+/* google MAP */
+.szallas_content > iframe {
+    margin: .5em 0;
+}
+
+/* LINKS */
+ul.link_list {
+    list-style: none;
+    text-align: center;
+}
+
+ul.link_list li {
+    margin-top: .5em;
+}
+
+a.lonely_link {
+    display: inline-block;
+    background-color: var(--clr3);
+    color: var(--clr4);
+	padding: .5em 1em;
+    border-radius: .5em;
+    border: 2px solid var(--clr4);
+    text-decoration: none;
+    font-size: var(--menu-font-size);
+}
+
+a.lonely_link:hover {
+	color: var(--clr3);
+	background-color: var(--clr5);
+}

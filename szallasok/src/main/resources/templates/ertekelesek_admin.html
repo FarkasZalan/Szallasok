@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <title>Értékelések</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/menubar.css}"/>
+</head>
+<body>
+<div class="topnav">
+  <a id="title_3" href="/">Szállás Neked</a>
+  <a href="/">Kezdőlap</a>
+  <a href="/users" >Felhasználók</a>
+  <a href="/szallasok_admin" >Szállások</a>
+  <a class="active" href="/ertekelesek_admin">Értékelések</a>
+  <a href="/profil">Profil szerkesztése</a>
+  <a href="/kilepes">Kilépés</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+<br><br>
+<main>
+  <form id="ertekelesek_admin_form" class="middle_items" th:each = " ertekeles, i : ${ertekelesek}" method="post" th:action="|/ertekelesek_admin/${ertekeles.id}|">
+    <h2 th:text = "'Értékelő: ' + ${ertekeles.getErtekeloEmailCime().getNev()}">XY User</h2>
+    <input type="text" th:value="${ertekeles.getErtekeloEmailCime().getEmail()}" style="display: none">
+    <h2 th:text = "'Szállás: ' + ${ertekeles.getSzallasID().getNev()}">XY Szállás </h2>  <!--TODO: th:text = "${ertekeles.szállásid}" vagy hasonló -->
+    <p th:text = "'Értékelés szövege: ' + ${ertekeles.getErtekelesLeiras()}">Nagyon jó volt a szállás. Minden szoba tiszta volt. Összességében meg voltam elégedve.</p>
+    <div th:text = "'Értékelés: ' + ${ertekeles.getErtekeles()}">
+
+
+    </div>
+    <br>
+    <input type="submit" value="Törlés">
+  </form>
+</main>
+</body>
+</html>

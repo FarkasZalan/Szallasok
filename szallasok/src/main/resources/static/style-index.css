@@ -1,0 +1,9 @@
+.kereso {
+color: var(--clr3);
+background-color: var(--clr4);
+text-align: center;
+}
+
+body{
+background: url(../../img/reg_background.png);
+}

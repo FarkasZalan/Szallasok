@@ -1,0 +1,41 @@
+:root {
+    --clr1: #983106; 
+    --clr3: #122531;
+    --clr4: #E1E6E7;
+    --clr5: #949899;
+    --header-img: url('../images/header.jpg');
+    --font-size: 16px;
+    --menu-font-size: 20px;
+    --font-size-title: 32px;
+}
+
+body{
+background: url(../../img/reg_background.png);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2em 2em;
+}
+  
+.container > div {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.container > div > form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    min-width: max-content;
+    color: var(--clr3);
+}
+
+.cim2 {
+    font-size: var(--font-size-title);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}

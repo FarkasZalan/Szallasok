@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bejelentkezés/Regisztráció</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="style-log_reg.css"/>
+    <link rel="stylesheet" type="text/css" href="alert.css"/>
+    <link rel="stylesheet" type="text/css" href="menubar.css"/>
+</head>
+<body>
+<div class="topnav">
+    <a id="title" href="/">Szállás Neked</a>
+    <a href="/">Kezdőlap</a>
+    <a class="active" href="/log_reg">Bejelentkezés/Regisztráció</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+<h1 id="page_title">Jelentkezz be, vagy regisztrálj ha még nincs fiókod!</h1>
+<main class="container">
+    <div>
+        <form th:action="@{/regisztracio_process}" name="regisztracio_urlap" id="regisztracio_urlap" method="post">
+            <h2 class="cim2">Regisztráció</h2><br>
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" placeholder="Add meg az email címedet" required><br><br>
+            <label for="nev">Teljes név:</label><br>
+            <input type="text" id="nev" name="nev" placeholder="Add meg a nevedet" required><br><br>
+            <label for="lakcim">Lakcím:</label><br>
+            <input type="text" id="lakcim" name="lakcim" placeholder="Add meg a lakcímedet" required><br><br>
+            <label for="telefonszam">Telefonszám:</label><br>
+            <input type="tel" id="telefonszam" name="telefonszam" placeholder="Add meg a telefonszámodat" required><br><br>
+            <label for="jelszo">Jelszó:</label><br>
+            <input type="password" id="jelszo" name="jelszo" placeholder="Adj meg egy jelszót" required><br><br>
+            <label for="jelszo2">Jelszó mégegyszer:</label><br>
+            <input type="password" id="jelszo2" name="jelszo2"  placeholder="Add meg még egyszer a jelszót" required><br><br>
+
+            <input type="radio" name="jogosultsag" id="berlo" value="Bérlő" checked>
+            <label for="berlo">Bérlő</label><br>
+            <input type="radio" name="jogosultsag" id="kiado"  value="Kiadó">
+            <label for="kiado">Kiadó</label><br>
+            <input type="submit" value="Regisztráció">
+        </form>
+    </div>
+    <div>
+
+        <form action="#" th:action="@{/bejelentkezes}" method="post">
+            <h2 class="cim2">Bejelentkezés</h2><br>
+            <label for="email_log">E-mail:</label><br>
+            <input type="text" id="email_log" name="email" value="" autocomplete="on" required><br><br>
+            <label for="psw_log">Jelszó:</label><br>
+            <input type="password" id="psw_log" name="psw" value="" autocomplete="on" required><br><br>
+            <input type="submit" value="Bejelentkezés">
+        </form>
+
+        <form action="#" th:action="@{/jelszo_emlekezteto}" method="post">
+            <h2 class="cim2">Elfelejtett jelszó</h2><br>
+            <label for="email_forgotten">E-mail:</label><br>
+            <input type="email" id="email_forgotten" autocomplete="on" name="email" required><br><br>
+            <input type="submit" value="Jelszó emlékeztető küldés">
+        </form>
+    </div>
+
+</main>
+<footer>
+</footer>
+</body>
+</html>
