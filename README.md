@@ -1,5 +1,4 @@
 # Szallasok
-Egyetemi projekt
 
 ## Felhasználókezelés
 A felhasználó regisztrálhat ha még nincs fiókja. 2 típusú felhasználó is van, az egyik a bérlő a másik pedig az eladó. A kötelező adatok megadása után már bejelentkezhet (ha már regisztrált de elfelejtette a jelszavát akkor emailes emlékeztetőt kérhet), ahol áttekintheti a saját adatait, módosíthatja azokat.
