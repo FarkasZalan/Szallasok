@@ -16,6 +16,6 @@ Ha lefoglalnak egy szállást, módosítják vagy törlik a foglalást akkor arr
 A kiadó új szállásokat hozhat létre, tölthet fel minden szállásához képet is hogyha szeretne. Abban az esetben, hogyha a szállást módosítani vagy törölné a kiadó, akkor az összes érintett bérlő emailes tájékoztatést kap az esetről.
 
 ### Egyéb tudnivalók
-Az alkalmazás spring keretrendszerben készűlt java nyelven maven és thymeleaf segítségével localhost adatbázissal.
+Az alkalmazás spring keretrendszerben készűlt java nyelven maven és thymeleaf segítségével MySQL adatbázissal illetve futtatható Docker környezetben(mysql image megléte szükséges hozzá) majd a docker-compose up --build parancs kiadása után a localhost:8090 url-en el is indul az alkalmazás .
 Az oldal elérése indítás után a localhost:8081-es porton érhető el.
 Meg vannak benne valósítva a CRUD műveletek a megfelelő hibakezelésekkel együtt valamint a JDBC alkalmazása mellett sql lekérdezésekkel is dolgoztam a projekten belül (pl a foglalás menete).
