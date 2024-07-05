@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Szállás</title>
     <meta charset="UTF-8">
@@ -12,9 +12,37 @@
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/style-szallas.css}"/>
     <link rel="stylesheet" type="text/css"th:href="@{/alert.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/menubar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{navbar.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/style-ertekeles.css}"/>
 </head>
+<style>
+    .topnav {
+        overflow: hidden;
+        background-color: #122531;
+    }
+
+    .topnav a {
+        float: left;
+        margin-top: 10px;
+        margin-right: 1%;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        background-color: #cd2b30;
+        color: white;
+    }
+
+</style>
 <body>
 <div th:if="${berlo}" class="topnav">
     <a id="title" href="/">Szállás Neked</a>

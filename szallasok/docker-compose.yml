@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  mysqlDB:
+    image: mysql:latest
+    restart: always
+    container_name: mysqlContainer
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "szallasok"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    healthcheck:
+      test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD' ]
+      timeout: 20s
+      retries: 10
+    ports:
+      - "3307:3306"
+    networks:
+      - mysqlNetwork
+
+  szallasokApp:
+    image: szallasokimage
+    container_name: szallasokContainer
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8081"
+    environment:
+      MYSQL_HOST: mysqlContainer
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: szallasok
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    depends_on:
+      mysqlDB:
+        condition: service_healthy
+    networks:
+      - mysqlNetwork
+    restart: on-failure
+
+networks:
+  mysqlNetwork:
+    driver: bridge

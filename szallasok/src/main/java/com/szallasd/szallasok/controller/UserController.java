@@ -280,7 +280,7 @@ public class UserController {
     }
 
     // ------------------------------------------ Szallasok kezelese ---------------------------------------------------
-    @GetMapping(value = {"/", "/index"})
+    @GetMapping(value = {"/", "/szallasok"})
     public String welcomeHandler(Model model) {
         //Menühüz kell
         model.addAttribute("berlo", berloVanBent);
@@ -317,10 +317,10 @@ public class UserController {
 
         telepulesSzures = "";
         rendezesSzures = "";
-        return "index";
+        return "szallasok";
     }
 
-    @PostMapping(value = {"/", "/index"})
+    @PostMapping(value = {"/", "/szallasok"})
     public String welcomeSzallasListGet(
             @RequestParam("telepules") String telepules,
             @RequestParam("rendezes") String rendezes,
@@ -329,7 +329,7 @@ public class UserController {
         telepulesSzures = telepules;
         rendezesSzures = rendezes;
 
-        return "redirect:/index";
+        return "redirect:/szallasok";
     }
 
     @GetMapping(value = "/szallas/{id}")

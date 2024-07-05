@@ -82,7 +82,7 @@ public class FoglalasController {
             model.addAttribute("elozmenyek", elozmenyek);
             return "foglalasaim";
         } else {
-            return "redirect:/index";
+            return "redirect:/szallasok";
         }
     }
 
@@ -125,7 +125,7 @@ public class FoglalasController {
             model.addAttribute("szallasKapacitas", ferohely);
             return "foglalas_modositas";
         } else {
-            return "redirect:/index";
+            return "redirect:/szallasok";
         }
     }
 
@@ -169,7 +169,7 @@ public class FoglalasController {
             redirectAttributes.addFlashAttribute("Uzenet", uzenet);
             return "redirect:/foglalas_modositas";
         } else {
-            return "redirect:/index";
+            return "redirect:/szallasok";
         }
     }
 
