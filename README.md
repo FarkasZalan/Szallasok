@@ -1,20 +1,25 @@
-# Szallasok
+# Accommodations
 
-## Felhasználókezelés
-A felhasználó regisztrálhat ha még nincs fiókja. 2 típusú felhasználó is van, az egyik a bérlő a másik pedig az eladó. A kötelező adatok megadása után már bejelentkezhet (ha már regisztrált de elfelejtette a jelszavát akkor emailes emlékeztetőt kérhet), ahol áttekintheti a saját adatait, módosíthatja azokat.
+## User Management
+Users can register if they don't have an account yet. There are two types of users: renters and sellers. After providing the required information, users can log in (if they have already registered but forgot their password, they can request an email reminder), where they can view and modify their own data.
 
 ## Admin
-Van egy admin felhasználó (email: admin | jelszó: admin) aki az összes regisztrált felhasználót és azok adatait megtekintheti illetve töröltheti is őket és az összes hozzájuk tartozó adatot is a rendszerből (pl a bérlőnek az összes olyan foglalását ami később van mint a törlés dátuma, kiadónak pedig az összes szállását ezzel) és ezekről kapnak mind kapnak emailes tájékoztatót az érintett felhasználók.
-Továbbá megtekintheti a szállásokra leadott értékeléseket is és törölheti is azokat illetve módosíthatja saját adatait is ha szeretné.
+There is an admin user (email: admin | password: admin) who can view and delete all registered users and their data from the system. This includes, for example, deleting a renter's bookings that are scheduled after the deletion date, or removing all accommodations from a host, along with all related data. Affected users receive email notifications about these changes.
+
+Additionally, the admin can view and delete reviews for accommodations and can also modify their own data if desired.
 
 
 
-## A projektről
-Ebben a spring alkalmazásban lehetőség van áttekinteni az összes szállást és hozzá tartozó értékeléseket. Ha egy bérlő be van jelentkezve esetleg akkor lehetősége nyílik értékelést írni a szállásról, illetve lefoglalni azt. A foglalásnál meg kell adni azt, hogy mettől meddig szeretné lefoglalni az adott szállást és hány főre foglalna. Abban az esetben, hogyha az adott időpontra nincs elegendő hely a megadott főnek, akkor természetesen nem engedi lefoglalni és javasol a megadott időintervallumhoz legközelebb eső új időpontot ugyanennyi napra, amikor már elférne mindenki oly módon, hogy mutat egy előbbi dátumot de csak akkor, hogyha ez az új időintervallum még nem esne bele a mai napba vagy előbbre, illetve mutat egy kívánt időintervallum utáni lehetőséget is és ezt a foglalást még módosíthatja, illetve törölheti is a bérlő abban az esetben, hogyha még nem a foglalás idején tenné meg ezeket.
-Ha lefoglalnak egy szállást, módosítják vagy törlik a foglalást akkor arról mindig kap emailt az érintett kiadó.
+## About the Project
 
-A kiadó új szállásokat hozhat létre, tölthet fel minden szállásához képet is hogyha szeretne. Abban az esetben, hogyha a szállást módosítani vagy törölné a kiadó, akkor az összes érintett bérlő emailes tájékoztatést kap az esetről.
+In this Spring application, users can view all accommodations and their associated reviews. If a renter is logged in, they have the option to write a review for an accommodation and book it. When booking, they need to specify the desired check-in and check-out dates and the number of people. If there is insufficient availability for the specified number of guests on the chosen dates, the system will not allow the booking and will suggest alternative dates that are closest to the requested period. It will display a previous date only if the new period does not fall within the current day or a future date, and it will also show available options after the desired interval. Renters can modify or cancel bookings as long as they do so before the booking date.
 
-### Egyéb tudnivalók
-Az alkalmazás spring keretrendszerben készűlt java nyelven maven és thymeleaf segítségével MySQL adatbázissal illetve futtatható Docker környezetben(mysql image megléte szükséges hozzá) majd a docker-compose up --build parancs kiadása után a localhost:8090 url-en el is indul az alkalmazás.
-Meg vannak benne valósítva a CRUD műveletek a megfelelő hibakezelésekkel együtt valamint a JDBC alkalmazása mellett sql lekérdezésekkel is dolgoztam a projekten belül (pl a foglalás menete).
+Whenever an accommodation is booked, modified, or canceled, the affected host will receive an email notification.
+
+Hosts can create new accommodations and upload images for each one if desired. If a host decides to modify or delete an accommodation, all affected renters will receive an email notification about the change.
+
+### Additional Information
+
+The application was developed using the Spring framework in Java, with Maven and Thymeleaf, and utilizes a MySQL database. It can be run in a Docker environment (requiring a MySQL image). After running the command docker-compose up --build, the application will start and be accessible at localhost:8090.
+
+The application implements CRUD operations with appropriate error handling, and SQL queries are used in conjunction with JDBC within the project (e.g., for the booking process).
