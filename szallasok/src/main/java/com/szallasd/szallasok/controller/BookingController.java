@@ -48,8 +48,9 @@ public class BookingController {
 
     // The exact date when the user is submit the booking
     LocalDate bookingDate;
+    
     @Autowired
-    private final EmailSend emailSend;
+    private final EmailSend emailSend;  // Service class for Email sending
 
     // Constructor for dependency injection of repositories
     public BookingController(EvaluationsRepo evaluationsRepo, UserRepo userRepo, BookingHistoryRepo bookingHistoryRepo, BookingRepo bookingRepo, AccommodationRepo accommodationRepo, EmailSend emailSend) {
