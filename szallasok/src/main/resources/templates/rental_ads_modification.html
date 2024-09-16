@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hírdetés módosítása</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="alert.css"/>
+    <link rel="stylesheet" type="text/css" href="navbar.css"/>
+</head>
+<style>
+body{
+background: url(../../img/reg_background.png);
+}
+table{
+    background-color: #ffffff !important;
+    }
+    table tr:hover{
+    background-color: #ffffff !important;
+    }
+    table tr:nth-child(even) {
+     background-color: #ffffff !important;
+    }
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2em 2em;
+}
+
+.container > div {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.container > div > form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    min-width: max-content;
+    color: var(--clr3);
+}
+
+.cim2 {
+    font-size: var(--font-size-title);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    font-size: 30px;
+}
+    .topnav {
+  overflow: hidden;
+  background-color: #122531;
+}
+
+.topnav a {
+  float: left;
+  margin-top:10px;
+  margin-right:1%;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #cd2b30;
+  color: white;
+}
+.vissza{
+        margin: 0;
+        border:none;
+        background-color: initial;
+        margin-top: -1.1%;
+    }
+    .modosit{
+        margin-left: 31.5%;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .torles{
+        font-size: 20px;
+        cursor: pointer;
+        margin-left: 3%;
+    }
+
+
+    .vissza_gomb {
+         width: 160px;
+        height: 50px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    input[type="text"] {
+        width: 230px;
+    }
+    .alert{
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+</style>
+<body>
+<div class="topnav">
+    <a id="title_2" href="/">Szállás Neked</a>
+    <a href="/">Kezdőlap</a>
+    <a class="active" href="/hirdeteseim">Hírdetés szerkesztése</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+    <main class="middle_items">
+        <form action="#" th:action="szerkesztes" method="post" enctype="multipart/form-data">
+            <h2 class="cim2">Apartman adatainak módosítása</h2><br>
+            <label for="nev">Név megváltoztatása:</label><br>
+            <input th:each="szallas : ${szallas}" th:value="${szallas.nev}" type="text" placeholder="Új cím megadása" id="nev" maxlength="200" name="nev"><br><br>
+            <label for="cim">Cím megváltoztatása:</label><br>
+            <input th:each="szallas : ${szallas}" th:value="${szallas.location}" type="text" placeholder="Új cím megadása" maxlength="200" id="cim" name="cim"><br><br>
+            <label for="ar">Ár/nap/fő megváltoztatása:</label><br>
+            <input th:each="szallas : ${szallas}" th:value="${szallas.arPerNapPerFo}" type="number" placeholder="Új ár/nap/fő megadása" max="999999999" id="ar" name="ar"><br><br>
+            <label for="ferohely">Befogadóképesség megváltoztatása:</label><br>
+            <input th:each="szallas : ${szallas}" th:value="${szallas.maxCapacity}" type="number" id="ferohely" placeholder="Új kapacitás megadása" name="ferohely" max="999999999"><br><br>
+            <label for="leiras">Leírás megváltoztatása:</label><br>
+            <textarea th:each="szallas : ${szallas}" th:text="${szallas.description}" id="leiras" name="leiras" rows="4" maxlength="255" cols="60" ></textarea><br><br>
+            <table>
+                <tbody>
+                <label for="regiKep">Jelenlegi kép:</label><br>
+                <tr th:each="szallas : ${szallas}">
+                    <td id="regiKep" th:if="${szallas.kep != ''}"><img alt="" th:src="*{'data:image/jpeg;base64,'+{szallas.kep}}" /></td>
+                    <td th:if="${szallas.kep == ''}"><img alt="" src="../../img/image1.jpg" /></td>
+                </tr><br>
+                <input class="torles" formaction="kep_torlese" type="submit" value="Kép eltávolítása">
+                </tbody>
+            </table>
+            <label for="img">Kép cseréje</label><br><br>
+            <input type="file" id="img" name="img" accept="image/*"><br><br><br>
+           <input class="modosit" type="submit" value="Adatok módosítása">
+       </form>
+        <form class="vissza" action="/hirdeteseim" method="get">
+            <input class="vissza_gomb" type="submit" value="Vissza">
+        </form>
+
+    </main>
+</body>
+</html>

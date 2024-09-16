@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Foglalás</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="../../style-foglal.css"/>
+    <link rel="stylesheet" type="text/css" href="../../alert.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{navbar.css}"/>
+</head>
+<style>
+    .foglal{
+    cursor:pointer;
+    }
+    .foglal_form{
+    padding-bottom: 0;
+    }
+    .cim2 {
+    font-size: 36px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+</style>
+<body>
+<div class="topnav">
+    <a id="title" href="/">Szállás Neked</a>
+    <a href="/">Kezdőlap</a>
+    <a href="/foglalasaim">Foglalásaim</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+    <main class="middle_items">
+<br><br>
+        <div class="foglal_form">
+            <h2 class="cim2">Szállás foglalás</h2><br>
+            <span th:text="|Szállás neve: ${szallas.name}|" >Szállás neve: Mariska szállás</span><br><br>
+            <span th:text="|Szállás címe: ${szallas.location}|" >Szállás címe: Szeged, Keresztes utca 6.</span><br>
+            <form action="#" th:action="foglal" method="post">
+                <label for="date1">Mettől</label><br>
+                <input type="date" id="date1" name="date_start" required><br><br>
+                <label for="date2">Meddig</label><br>
+                <input type="date" id="date2" name="date_end" required><br><br>
+
+                <label for="db_szam">Mennyi főre foglal?</label><br>
+                <input type="number" id="db_szam" min="1" max="100" value="1" name="dbszam"><br><br><br>
+                <input class="foglal" type="submit" value="Foglal">
+            </form>
+        </div>
+        <br>
+        <a th:href="vissza" >Vissza</a> <br>
+    </main>
+
+<footer>
+</footer>
+</body>
+</html>

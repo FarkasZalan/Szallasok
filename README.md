@@ -1,4 +1,4 @@
-# Accommodations
+# Accommodations (2022)
 
 ## User Management
 Users can register if they don't have an account yet. There are two types of users: renters and sellers. After providing the required information, users can log in (if they have already registered but forgot their password, they can request an email reminder), where they can view and modify their own data.

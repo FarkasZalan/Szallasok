@@ -26,7 +26,7 @@
 <br><br>
 <main>
     <form th:each="user, i : ${users}" class="users_form" method="post" th:action="|/users/${user.email}|" id="userform">
-        <span th:text="'Név: ' + ${user.getNev()}">XY User:</span><br>
+        <span th:text="'Név: ' + ${user.getName()}">XY User:</span><br>
         <input type="text" th:value="${user.getEmail()}" style="display: none">
         <span th:text="'E-mail: ' + ${user.getEmail()}">XY email:</span><br>
         <textarea id="indoklas" name="indoklas" rows="4" cols="30" style="resize: none"></textarea><br>

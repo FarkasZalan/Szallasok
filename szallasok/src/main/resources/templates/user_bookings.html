@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Foglalásaim</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" type="text/css" href="style-log_reg.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="alert.css"/>
+    <link rel="stylesheet" type="text/css" href="navbar.css"/>
+
+    <style>
+        .szerkeszt_gomb{
+        padding: 0.4em 1em;
+        cursor: pointer;
+        color: #cd2b30;
+        }
+        .szerkeszt_gomb:hover{
+        color: #cd2b30;
+        }
+        .torol_gomb{
+        padding: 0.4em 1em;
+        cursor: pointer;
+        }
+        .torol_gomb:hover{
+        color: #cd2b30;
+        }
+        table{
+        background-color: #ffffff !important;
+        }
+        table tr:hover{
+        background-color: #ffffff !important;
+        }
+        table tr:nth-child(even) {
+         background-color: #ffffff !important;
+        }
+         .vissza{
+            margin: 0;
+            border:none;
+            background-color: initial;
+            margin-top: -1.1%;
+        }
+        .modosit{
+            margin-left: 27%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .vissza_gomb {
+             width: 310px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="topnav">
+    <a id="title" href="/">Szállás Neked</a>
+    <a href="/">Kezdőlap</a>
+    <a class="active" href="/foglalasaim">Foglalásaim</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+<main class="middle_items">
+    <table>
+        <tr>
+            <th>Szállás neve
+            <th></th>
+            </td>
+            <th>Foglalás időpontja
+            </td>
+            <th>Beköltözés dátuma</th>
+            <th>Kiköltözés dátuma</th>
+            <th>Személyek száma</th>
+            <th>Fizetendő összeg</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody>
+        <tr th:each="elozmeny : ${elozmenyek}">
+            <form action="/foglalas_modositas" method="get">
+                <td th:text="${elozmeny.accommodationName}"></td>
+                <td th:if="${elozmeny.accommodationImage != ''}"><img alt="" th:src="*{'data:image/jpeg;base64,'+{elozmeny.szallasKepe}}" /></td>
+                <td th:if="${elozmeny.accommodationImage == ''}"><img alt="" src="img/image1.jpg" /></td>
+                <td th:text="${elozmeny.bookingDate}"></td>
+                <td th:text="${elozmeny.bookingStartDate}"></td>
+                <td th:text="${elozmeny.bookingEndDate}"></td>
+                <td th:text="${elozmeny.personQuantity}"></td>
+                <td th:text="${elozmeny.totalAmount} +  Ft"></td>
+                <input type="hidden" th:value="${elozmeny.id}" name="foglalasAzonosito"/>
+                <input type="hidden" th:value="${elozmeny.bookingStartDate}" name="idopont"/>
+                <td><input class="szerkeszt_gomb" type="submit" name="submit" alt="modosit" value="Foglalás módosítása">
+                </td>
+            </form>
+            <form action="/foglalas_torlese" method="get">
+                <input type="hidden" th:value="${elozmeny.bookingStartDate}" name="idopont"/>
+                <input type="hidden" th:value="${elozmeny.id}" name="foglalasAzonosito"/>
+                <td><input class="torol_gomb" type="submit" name="submit" alt="torol" value="Foglalás lemondása"></td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+    <form class="vissza" action="/" method="get">
+        <input class="vissza_gomb" type="submit" value="Új szállás foglalása">
+    </form>
+</main>
+</body>
+</html>

@@ -333,7 +333,7 @@ margin-left: auto;
     margin-left: 20px;
     font-weight: bold;
 }
-/*ertekelesek_admin.html */
+/*evaluations_admin.html */
 
 #ertekelesek_admin_form{
     margin-left: auto;
@@ -364,7 +364,7 @@ width: 16.25em;
     display: inline-block;
     }
 
-/*profil.html*/
+/*profile.html*/
 
 #profil_form{
     background-color: #122531;
@@ -372,7 +372,7 @@ width: 16.25em;
     margin-right: auto;
 }
 
-/*hirdeteseim.html*/
+/*rental_ads.html*/
 
 #hirdeteseim_form{
     margin-left: auto;
@@ -383,13 +383,13 @@ width: 16.25em;
     margin-right: auto;
 }
 
-/*kiado_uj_hirdetes.html*/
+/*rental_new_ad.html*/
 #uj_hirdetes_form{
     margin-left: auto;
     margin-right: auto;
 }
 
-/*hirdetes_szerkesztes.html*/
+/*rental_ads_modification.html*/
 #apartman_h1{
     text-align:center;
     font-size: larger;

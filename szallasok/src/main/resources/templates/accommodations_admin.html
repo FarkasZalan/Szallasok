@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Felhasználók</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+  <link rel="stylesheet" type="text/css" href="alert.css"/>
+  <link rel="stylesheet" type="text/css" href="navbar.css"/>
+  <link rel="stylesheet" type="text/css" href="style-admin.css"/>
+
+</head>
+<body>
+<div class="topnav">
+  <a id="title_3" href="/">Szállás Neked</a>
+  <a href="/">Kezdőlap</a>
+  <a href="/users" >Felhasználók</a>
+  <a class="active" href="/szallasok_admin" >Szállások</a>
+  <a href="/ertekelesek_admin" >Értékelések</a>
+  <a href="/profil">Profil szerkesztése</a>
+  <a href="/kilepes">Kilépés</a>
+</div>
+<br><br>
+<main>
+  <form th:each="szallas, i : ${szallasok}" class="users_form" method="post" th:action="|/szallasok_admin/${szallas.id}|">
+    <span th:text="'Szállás név: ' + ${szallas.name}" >XY User:</span><br>
+    <span th:text="'Szállás ID: ' + ${szallas.id}" >XY email:</span><br>
+    <textarea id="indoklas" name="indoklas" rows="4" cols="30" style="resize: none"></textarea><br>
+    <input type="submit" value="törlés">
+  </form>
+</main>
+</body>
+</html>

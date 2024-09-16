@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Értékelés</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Szállás kereső-hirdető oldal"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="../../style-foglal.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{navbar.css}"/>
+    <link rel="stylesheet" type="text/css" href="../../style-ertekeles.css"/>
+</head>
+<body>
+<div class="topnav">
+    <a id="title" href="/">Szállás Neked</a>
+    <a href="/">Kezdőlap</a>
+    <a href="/foglalasaim">Foglalásaim</a>
+    <a href="/profil">Profil szerkesztése</a>
+    <a href="/kilepes">Kilépés</a>
+</div>
+<div th:if="${Uzenet}" class="alert alert-info" role="alert" th:text="${Uzenet}"></div>
+    <main class="container middle_items">
+        <a th:href="vissza" >Vissza</a> <br>
+        <div class="foglal_form">
+            <span th:text="|Szállás neve: ${szallas.name}|" >Szállás neve: Mariska szállás</span><br><br>
+            <span th:text="|Szállás címe: ${szallas.location}|" >Szállás címe: Szeged, Keresztes utca 6.</span><br>
+            <form action="#" th:action="ertekel" method="post">
+                <label for="text">Megjegyzés:</label> <br>
+                <textarea id="text" rows="4" cols="50" name="text"></textarea>
+                <br>
+                <input type="number" min="1" max="5" value="5" name="ertekeles">
+                <label>(1-5)</label>
+                <input type="submit" value="Értékelés">
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
