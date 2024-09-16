@@ -33,6 +33,7 @@ public class EvaluationController {
     public boolean userIsHost = false;
     public boolean userIsRenter = false;
     public boolean nobodyLoggedIn = true;
+    
     User loggedInUser; // Reference to the currently logged-in user
 
     // Constructor for dependency injection of repositories
