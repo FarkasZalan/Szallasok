@@ -38,9 +38,15 @@ public class BookingController {
     BookingHistoryRepo bookingHistoryRepo;
     BookingRepo bookingRepo;
     AccommodationRepo accommodationRepo;
+
+    // Reference to the currently logged-in user
     User loggedUser;
+
+    // Entities
     BookingHistory bookingToModify;
     Accommodation selectedAccommodation;
+
+    // The exact date when the user is submit the booking
     LocalDate bookingDate;
     @Autowired
     private final EmailSend emailSend;
